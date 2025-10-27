@@ -1,4 +1,5 @@
 import random
+import matplotlib.pyplot as plt
 
 #farrow shuffle
 def faro_shuffle(size=52,out=True):
@@ -56,6 +57,30 @@ def shuffles_needed(n):
 
     return k
 
+# n = upper bound of cards
+def plot_shuffles_needed(n):
+    print('began plotting')
+    num_cards = []
+    num_shuffles = []
+    for i in range(4, n + 2, 2):
+        print('calculating for ', i)
+        num_cards.append(i)
+        num_shuffles.append(shuffles_needed(i))
 
-# Test it
+    print("finished calculating x and y")
+    #plot them
+    plt.plot(num_cards, num_shuffles)
+
+    plt.xlabel("Number of Cards in Deck")
+    plt.ylabel("Number of Shuffles Required")
+    plt.title("Faro Shuffle: # Shuffles Required")
+    plt.show()
+
+
+# Different number of cards
 faro_shuffle(52)
+plot_shuffles_needed(500)
+
+#print('hello',shuffles_needed(2))
+
+
